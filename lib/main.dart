@@ -46,13 +46,13 @@ class LoginScreen extends StatelessWidget {
                       style: TextStyle(
                         fontSize: 32,
                         fontWeight: FontWeight.normal, // Peso regular
-                        fontFamily: 'Dosis', // Fonte Dosis
+                        fontFamily: "Dosis", // Fonte Dosis
                         color: Colors.teal,
                       ),
                     ),
                   ),
                 ),
-                SizedBox(height: 24),
+                SizedBox(height: 24 , width: 100,),
                 TextField(
                   cursorColor: Colors.teal, // Define a cor do cursor
                   decoration: InputDecoration(
@@ -136,7 +136,7 @@ class LoginScreen extends StatelessWidget {
                           Text(
                             'Lembrar minha senha',
                             style: TextStyle(
-                              fontFamily: 'Opens Sans',
+                              fontFamily: 'Dosis',
                               fontSize: 12,
                               fontWeight: FontWeight.w400,
                               height: 1.5,
@@ -171,8 +171,8 @@ class LoginScreen extends StatelessWidget {
                     width: 333, // Largura do botão
                     height: 56, // Altura do botão
                     margin: EdgeInsets.only(
-                        top: 18,
-                        left: 46), // Define a margem superior e à esquerda
+                        
+                        ), // Define a margem superior e à esquerda
                     child: ElevatedButton(
                       onPressed: () {
                         // Navegar para a tela inicial após o login
@@ -186,6 +186,7 @@ class LoginScreen extends StatelessWidget {
                           fontSize: 24,
                           fontWeight: FontWeight.w600,
                           height: 30.34 / 24,
+                          
                         ),
                       ),
                       style: ElevatedButton.styleFrom(
@@ -221,18 +222,16 @@ class LoginScreen extends StatelessWidget {
                     onPressed: () {
                       Navigator.pushNamed(context, '/register');
                     },
-                    child: Text('Registre-se',
-                    style: TextStyle(
-                      fontFamily: 'Dosis',
-                      fontSize: 24,
-                      fontWeight: FontWeight.w600,
-                      height: 1.5,
-                      color: Color(0xFF06C657), 
-
-
+                    child: Text(
+                      'Registre-se',
+                      style: TextStyle(
+                        fontFamily: 'Dosis',
+                        fontSize: 24,
+                        fontWeight: FontWeight.w600,
+                        height: 1.5,
+                        color: Color(0xFF06C657),
+                      ),
                     ),
-
-                                        ),
                     style: TextButton.styleFrom(
                       backgroundColor: Colors.white, // background: #FFFFFF;
                       minimumSize: Size(333, 56), // width: 333px; height: 56px;
@@ -254,16 +253,37 @@ class LoginScreen extends StatelessWidget {
                     ),
                   ),
                 ),
+                Container(
+                  margin: EdgeInsets.only(top: 30.0),
+                  child: Row(children: <Widget>[
+                    Expanded(
+                      child: Divider(
+                        height: 2,
+                        color: Colors.grey,
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                      child: Text('Ou acesse com'),
+                    ),
+                    Expanded(
+                      child: Divider(
+                        height: 2,
+                        color: Colors.grey,
+                      ),
+                    ),
+                  ]),
+                ),
                 SizedBox(height: 24),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
                     IconButton(
-                      icon: Icon(Icons.account_circle),
+                      icon: Image.asset('assets/images/Google.png'),
                       onPressed: () {},
                     ),
                     IconButton(
-                      icon: Icon(Icons.facebook),
+                      icon: Image.asset('assets/images/Facebook.png'),
                       onPressed: () {},
                     ),
                   ],

@@ -2,43 +2,47 @@ import 'package:flutter/material.dart';
 import 'register_screen.dart';
 import 'home_screen.dart'; // Importando a tela inicial
 
-void main() {
-  runApp(MyApp());
-}
 
-class MyApp extends StatelessWidget {
+
+
   @override
   Widget build(BuildContext context) {
+  double screenWidth = MediaQuery.of(context).size.width;
+  double screenHeigth = MediaQuery.of(context).size.height;
+
     return MaterialApp(
       title: 'Aplicativo',
       theme: ThemeData(
         primarySwatch: Colors.teal,
       ),
       home: LoginScreen(),
-      routes: {
-        '/register': (context) => RegisterScreen(),
-        '/home': (context) =>
-            HomeScreen(), // Definindo a rota para a tela inicial
-      },
+     // Definindo a rota para a tela inicial     
     );
   }
-}
+
 
 class LoginScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+   double screenWidth = MediaQuery.of(context).size.width;
+    double screenHeigth = MediaQuery.of(context).size.height;
+
+
     return Scaffold(
-      body: SingleChildScrollView(
+   body:SafeArea(
+       child: SingleChildScrollView(
         // Adicionado para evitar overflow
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 24.0),
+          
+           padding: EdgeInsets.symmetric(horizontal: screenWidth * 0.1 , vertical: screenHeigth * 0.01),
           child: Center(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
                 Container(
-                  margin: EdgeInsets.only(top: 190),
-                  padding: EdgeInsets.only(top: 10),
+                margin: EdgeInsets.only(
+                    top: screenHeigth * 0.1, bottom: screenHeigth * 0.01),
+                  padding: EdgeInsets.only(top: screenHeigth * 0.01),
                   child: Opacity(
                     opacity: 1.0,
                     child: Text(
@@ -52,7 +56,7 @@ class LoginScreen extends StatelessWidget {
                     ),
                   ),
                 ),
-                SizedBox(height: 24 , width: 100,),
+                   SizedBox(height: screenHeigth * 0.24, width: screenWidth * 1),
                 TextField(
                   cursorColor: Colors.teal, // Define a cor do cursor
                   decoration: InputDecoration(
@@ -61,7 +65,7 @@ class LoginScreen extends StatelessWidget {
                       color: Color(0xFF555555), // Cor aplicada
                       fontWeight: FontWeight.w400, // Peso regular
                       fontSize: 20,
-                      height: 1.366, // Altura da linha
+                      height: screenHeigth * 0.01366, // Altura da linha
                     ), // Cor do rótulo quando não está focado
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(20),
@@ -121,7 +125,7 @@ class LoginScreen extends StatelessWidget {
                 ),
                 SizedBox(height: 12),
                 Container(
-                  margin: const EdgeInsets.only(top: 10.0),
+                   margin: EdgeInsets.only(top: screenHeigth * 0.02),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: <Widget>[
@@ -170,9 +174,7 @@ class LoginScreen extends StatelessWidget {
                   child: Container(
                     width: 333, // Largura do botão
                     height: 56, // Altura do botão
-                    margin: EdgeInsets.only(
-                        
-                        ), // Define a margem superior e à esquerda
+                    margin: EdgeInsets.only(), // Define a margem superior e à esquerda
                     child: ElevatedButton(
                       onPressed: () {
                         // Navegar para a tela inicial após o login
@@ -191,16 +193,12 @@ class LoginScreen extends StatelessWidget {
                       ),
                       style: ElevatedButton.styleFrom(
                         padding:
-                            EdgeInsets.symmetric(horizontal: 80, vertical: 15),
+                            EdgeInsets.symmetric(   
+                              horizontal: screenWidth * 0.05,
+                              vertical: screenHeigth * 0.02),
                         shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.only(
-                            topLeft:
-                                Radius.circular(20), // Define o border-radius
-                            topRight: Radius.circular(20),
-                            bottomLeft: Radius.circular(20),
-                            bottomRight: Radius.circular(20),
+                          borderRadius: BorderRadius.circular(20),
                           ),
-                        ),
                         backgroundColor:
                             Color(0xFF06C270), // Define a cor de fundo do botão
                       ),
@@ -208,16 +206,22 @@ class LoginScreen extends StatelessWidget {
                   ),
                 ),
                 SizedBox(height: 240),
-                Text(
+                
+                Padding(
+                  padding:EdgeInsets.only(bottom: screenHeigth * 0.02), //Define a imagem inferior
+                  child:Text(
                   'Ainda não é registrado?',
+                  
                   style: TextStyle(
                       color: Color(0xFF555555),
                       fontSize: 16,
                       fontWeight: FontWeight.w400),
+                      
+                ),
                 ),
                 Opacity(
                   opacity:
-                      1.0, // Define a opacidade (0 = invisível, 1 = visível)
+                      1.0, 
                   child: TextButton(
                     onPressed: () {
                       Navigator.pushNamed(context, '/register');
@@ -238,14 +242,8 @@ class LoginScreen extends StatelessWidget {
                       padding: EdgeInsets
                           .zero, // Remove o espaçamento interno do botão
                       shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.only(
-                          topLeft: Radius.circular(
-                              20), // border-radius: 20px 0px 0px 0px;
-                          topRight: Radius.circular(20),
-                          bottomLeft: Radius.circular(20),
-                          bottomRight: Radius.circular(20),
+                          borderRadius: BorderRadius.circular(20),
                         ),
-                      ),
                       side: BorderSide(
                         color: Color(0xFF06C657), // Cor da borda: #06C657
                         width: 2, // Largura da borda: 2px
@@ -254,7 +252,10 @@ class LoginScreen extends StatelessWidget {
                   ),
                 ),
                 Container(
-                  margin: EdgeInsets.only(top: 30.0),
+                  margin: EdgeInsets.only(
+                    top: screenHeigth * 0.03,
+                 
+                  ),
                   child: Row(children: <Widget>[
                     Expanded(
                       child: Divider(
@@ -263,7 +264,7 @@ class LoginScreen extends StatelessWidget {
                       ),
                     ),
                     Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                      padding: EdgeInsets.symmetric(horizontal: 8.0 , vertical: screenHeigth * 0.01),
                       child: Text('Ou acesse com'),
                     ),
                     Expanded(
@@ -293,6 +294,7 @@ class LoginScreen extends StatelessWidget {
           ),
         ),
       ),
+   ),
     );
   }
 }
